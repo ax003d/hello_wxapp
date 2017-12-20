@@ -20,8 +20,8 @@
 
 .cover {
   width: 220rpx;
-  height: 220rpx;
-  background: gray;
+  height: 250rpx;
+  background: white;
 }
 
 .mr-10 {

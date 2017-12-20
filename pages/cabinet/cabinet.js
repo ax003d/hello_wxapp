@@ -26,11 +26,8 @@ Page({
       method: 'GET',
       success: function (res) {
         var data = res.data;
-        var bookowns = self.data.bookowns;
         if (data && 'objects' in data) {
-          for (let i in data.objects) {
-            bookowns.push(i);
-          }
+          var bookowns = [...self.data.bookowns, ...data.objects];
           self.setData({
             bookowns: bookowns
           })
