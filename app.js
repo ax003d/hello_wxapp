@@ -16,12 +16,6 @@ App({
       }
     })
 
-    wx.getWeRunData({
-      success(res) {
-        console.log(res);
-      }
-    })
-
     // 获取用户信息
     wx.getSetting({
       success: res => {
