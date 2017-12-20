@@ -15,17 +15,20 @@
 .bookown {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .cover {
-  width: 250rpx;
-  height: 250rpx;
+  width: 220rpx;
+  height: 220rpx;
   background: gray;
-  margin: 15rpx;
+}
+
+.mr-10 {
+  margin-right: 10rpx;
 }
 
 .book-info {
   display: flex;
   flex-direction: column;
-  padding-top: 5rpx;
 }
