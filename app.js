@@ -6,6 +6,8 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
+    this.globalData.sichu_user = wx.getStorageSync("sichu_user");
+
     // 登录
     wx.login({
       success: res => {

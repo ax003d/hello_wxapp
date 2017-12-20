@@ -2,7 +2,8 @@
   "pages": [
     "pages/login/login.js",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/cabinet/cabinet"
   ],
   "window": {
     "backgroundTextStyle": "light",

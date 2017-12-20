@@ -1,0 +1,23 @@
+<!--pages/cabinet/cabinet.wxml-->
+<view class='page'>
+  <view class='profile'>
+    <view>
+      <image src='{{ sichu_user.avatar }}' mode='aspectFill' class='avatar'></image>
+    </view>
+    <view>
+      <text>{{ sichu_user.username }}</text>
+    </view>
+  </view>
+  <view wx:for="{{ bookowns }}" class='bookown'>
+    <image src='{{ item.book.cover }}' class='cover'></image>
+    <view class='book-info'>
+      <text>{{ item.book.title }}</text>
+
+      <text wx:if="{{ item.status == 1 }}">可借</text>
+      <text wx:elif="{{ item.status == 2 }}">不可借</text>
+
+      <text wx:if="{{ item.remark }}">{{ item.remark }}</text>
+      <text wx:else>无备注</text>
+    </view>
+  </view>
+</view>
