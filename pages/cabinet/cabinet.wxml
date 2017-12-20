@@ -8,9 +8,9 @@
       <text>{{ sichu_user.username }}</text>
     </view>
   </view>
-  <view wx:for="{{ bookowns }}" class='bookown'>
+  <view wx:for="{{ bookowns }}" class='bookown' wx:key="{{ item.id }}">
     <image src='{{ item.book.cover }}' class='cover'></image>
-    <view class='book-info'>
+    <view class='book-info'>1
       <text>{{ item.book.title }}</text>
 
       <text wx:if="{{ item.status == 1 }}">可借</text>

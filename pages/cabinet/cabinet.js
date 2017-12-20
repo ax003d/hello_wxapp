@@ -32,9 +32,14 @@ Page({
       method: 'GET',
       success: function (res) {
         var data = res.data;
-        if ('objects' in data) {
+        if (data && 'objects' in data) {
           self.setData({
             bookowns: data.objects
+          })
+        } else {
+          wx.removeStorageSync("sichu_user")
+          wx.redirectTo({
+            url: '/pages/login/login.js',
           })
         }
       }
