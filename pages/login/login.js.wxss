@@ -1,0 +1,7 @@
+/* pages/login/login.js.wxss */
+.form {
+  margin-bottom: 15rpx;
+}
+.form input {
+  margin-bottom: 15rpx;
+}

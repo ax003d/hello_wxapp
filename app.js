@@ -9,9 +9,17 @@ App({
     // 登录
     wx.login({
       success: res => {
+        console.log(res.code);
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
+
+    wx.getWeRunData({
+      success(res) {
+        console.log(res);
+      }
+    })
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -34,6 +42,9 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    api_url: 'https://sichu.sinaapp.com',
+    apikey: 'ec2de0fd0d5279e9a8f82da1430325',
+    sichu_user: null,
   }
 })

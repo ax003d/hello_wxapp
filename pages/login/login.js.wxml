@@ -1,0 +1,13 @@
+<!--pages/login/login.js.wxml-->
+<view class='page'>
+  <view class='form'>
+    <form bindsubmit='login'>
+      <input name="username" type='text' placeholder='用户名'></input>
+      <input name="password" type='text' password='true' placeholder='密码'></input>
+      <button type='primary' form-type='submit'>登录</button>
+    </form>
+  </view>
+  <view>
+    <button>注册</button>
+  </view>
+</view>
