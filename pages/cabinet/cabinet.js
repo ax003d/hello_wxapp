@@ -37,8 +37,19 @@ Page({
             url: '/pages/login/login.js',
           })
         }
+      },
+      fail: function(res) {
+        wx.clearStorageSync();
+        wx.redirectTo({
+          url: '/pages/login/login.js',
+        })
       }
     })
+  },
+
+  on_detail: function(e) {
+    console.log(e.target);
+    console.log("on detail");
   },
 
   /**
