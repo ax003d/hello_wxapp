@@ -10,10 +10,12 @@ Page({
   },
 
   on_save: function(e) {
+    // todo: save
     console.log(e.detail.value);
   },
 
   on_delete: function() {
+    // todo: delete
     console.log("on delete");
   },
 
@@ -49,12 +51,6 @@ Page({
             url: '/pages/login/login.js',
           })
         }
-      },
-      fail: function (res) {
-        wx.clearStorageSync();
-        wx.redirectTo({
-          url: '/pages/login/login',
-        })
       }
     })
   },
