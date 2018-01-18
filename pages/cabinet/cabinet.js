@@ -9,7 +9,40 @@ Page({
     bookowns: []
   },
 
-  load_bookown: function() {
+  on_add: function () {
+    var app = getApp();
+    var self = this;
+    var url = app.globalData.api_url + "/v1/bookown/add/";
+
+    wx.scanCode({
+      success: function (e) {
+        var isbn = e.result;
+        wx.request({
+          url: url,
+          data: {
+            isbn: isbn,
+            status: '1'
+          },
+          header: {
+            "Authorization": "Bearer " + self.data.sichu_user.token,
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          method: 'POST',
+          success: function (res) {
+            console.log(res.data);
+            if (res.statusCode == 200) {
+              var bookowns = [res.data, ...self.data.bookowns];
+              self.setData({
+                bookowns: bookowns
+              })
+            }
+          }
+        })
+      }
+    })
+  },
+
+  load_bookown: function () {
     var app = getApp();
     var self = this;
     var url = app.globalData.api_url + "/v1/bookown/";
@@ -25,6 +58,13 @@ Page({
       },
       method: 'GET',
       success: function (res) {
+        if (res.statusCode != 200) {
+          wx.clearStorageSync();
+          wx.redirectTo({
+            url: '/pages/login/login',
+          })
+          return
+        }
         var data = res.data;
         if (data && 'objects' in data) {
           var bookowns = [...self.data.bookowns, ...data.objects];
@@ -37,17 +77,11 @@ Page({
             url: '/pages/login/login.js',
           })
         }
-      },
-      fail: function(res) {
-        wx.clearStorageSync();
-        wx.redirectTo({
-          url: '/pages/login/login',
-        })
       }
     })
   },
 
-  on_detail: function(e) {
+  on_detail: function (e) {
     wx.navigateTo({
       url: '/pages/bookown_detail/bookown_detail?id=' + e.target.id,
     })

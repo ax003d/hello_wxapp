@@ -10,10 +10,10 @@
   </view>
   <view class='bookown'>
     <view wx:for="{{ bookowns }}" wx:key="{{ item.id }}">
-      <image src='{{ item.book.cover }}'
-        mode='aspectFit'
-        class='cover {{ index % 3 < 2 ? "mr-10": "" }}'
-        bindtap="on_detail" id="{{ item.id }}"></image>
+      <image src='{{ item.book.cover }}' mode='aspectFit' class='cover {{ index % 3 < 2 ? "mr-10": "" }}' bindtap="on_detail" id="{{ item.id }}"></image>
     </view>
   </view>
+</view>
+<view class='btn-add'>
+  <button bindtap='on_add'>+</button>
 </view>
