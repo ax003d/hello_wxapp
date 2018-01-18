@@ -1,0 +1,36 @@
+<!--pages/bookown_detail/bookown_detail.wxml-->
+<view>
+  <view class='detail'>
+    <view>
+      <text>{{ bookown.book.title }}</text>
+    </view>
+    <view class='book_info'>
+      <view class='flex-view-item'>
+        <image src='{{ bookown.book.cover }}' mode='aspectFit' class='cover'></image>
+      </view>
+      <view class='flex-view-item'>
+        <view>
+          <text>作者：</text>
+          <text class='val'>{{ bookown.book.author }}</text>
+        </view>
+        <view>
+          <text>ISBN: </text>
+          <text class='val'>{{ bookown.book.isbn }}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='form'>
+    <form bindsubmit='on_save'>
+      <picker name="status" value='{{ bookown.status }}' range='{{ status }}' bindchange="on_status">
+        <view class="picker">
+          <text>状态：</text><text>{{status[bookown.status]}}</text>
+        </view>
+      </picker>
+      <textarea name="remark" placeholder='备注' value='{{ bookown.remark }}' auto-height='true' class='mt-20'></textarea>
+      <button type='primary' form-type='submit' class='mt-20'>保存</button>
+      <button bindtap='on_delete' class='mt-20'>删除</button>
+    </form>
+  </view>
+</view>

@@ -1,0 +1,29 @@
+/* pages/bookown_detail/bookown_detail.wxss */
+.detail {
+  background: #f5e3bd;
+  padding: 35rpx;
+}
+
+.book_info {
+  display: flex;
+  margin-top: 20rpx;
+}
+
+.cover {
+  width: 220rpx;
+  height: 250rpx;
+  background: white;
+  margin-right: 20rpx;
+}
+
+.val {
+  color: #bf7b54;
+}
+
+.form {
+  margin: 35rpx;
+}
+
+.mt-20 {
+  margin-top: 20rpx;
+}
