@@ -33,7 +33,16 @@
   flex-direction: column;
 }
 
-.btn-add {
+.tools {
+  display: flex;
   position: fixed;
   bottom: 100rpx;
+  width: 100%;
+  align-items: center;
+}
+
+.btn-add {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
 }

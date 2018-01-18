@@ -14,6 +14,6 @@
     </view>
   </view>
 </view>
-<view class='btn-add'>
-  <button bindtap='on_add'>+</button>
+<view class='tools'>
+  <button type='primary' class='btn-add flex-view-item' bindtap='on_add'>+</button>
 </view>
