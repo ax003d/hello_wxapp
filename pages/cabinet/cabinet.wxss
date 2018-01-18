@@ -34,7 +34,6 @@
 }
 
 .btn-add {
-  position: absolute;
-  align-items: center;
-  top: 100rpx;
+  position: fixed;
+  bottom: 100rpx;
 }
