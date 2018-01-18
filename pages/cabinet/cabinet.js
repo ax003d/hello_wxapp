@@ -30,7 +30,7 @@ Page({
           method: 'POST',
           success: function (res) {
             console.log(res.data);
-            if (res.statusCode == 200) {
+            if (res.statusCode == 200 && 'book' in res.data) {
               var bookowns = [res.data, ...self.data.bookowns];
               self.setData({
                 bookowns: bookowns
