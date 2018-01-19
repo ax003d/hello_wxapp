@@ -31,7 +31,7 @@ Page({
           wx.showToast({
             title: '保存成功',
             icon: 'success',
-            duration: 2000
+            duration: 1000
           })
         }
       }
@@ -61,6 +61,12 @@ Page({
   on_status: function(e) {
     this.setData({
       "bookown.status": parseInt(e.detail.value)
+    })
+  },
+
+  on_remark: function(e) {
+    this.setData({
+      "bookown.remark": e.detail.value
     })
   },
 

@@ -28,7 +28,7 @@
           <text>状态：</text><text>{{status[bookown.status]}}</text>
         </view>
       </picker>
-      <textarea name="remark" placeholder='备注' value='{{ bookown.remark }}' auto-height='true' class='mt-20'></textarea>
+      <textarea name="remark" placeholder='备注' value='{{ bookown.remark }}' auto-height='true' class='mt-20' bindblur="on_remark"></textarea>
       <button type='primary' form-type='submit' class='mt-20'>保存</button>
       <button bindtap='on_delete' class='mt-20'>删除</button>
     </form>
