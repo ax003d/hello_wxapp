@@ -10,18 +10,56 @@ Page({
   },
 
   on_save: function(e) {
-    // todo: save
-    console.log(e.detail.value);
+    var app = getApp();
+    var self = this;
+    var url = app.globalData.api_url + "/v1/bookown/" + this.data.bookown.id + "/";
+    var status = this.data.bookown.status + 1
+    wx.request({
+      url: url,
+      header: {
+        "Authorization": "Bearer " + app.globalData.sichu_user.token,
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        status: status.toString(),
+        remark: this.data.bookown.remark
+      },
+      method: 'POST',
+      success: function (res) {
+        var data = res.data;
+        if (data && 'status' in data) {
+          wx.showToast({
+            title: '保存成功',
+            icon: 'success',
+            duration: 2000
+          })
+        }
+      }
+    })
   },
 
   on_delete: function() {
-    // todo: delete
-    console.log("on delete");
+    var app = getApp();
+    var self = this;
+    var url = app.globalData.api_url + "/v1/bookown/delete/" + this.data.bookown.id + "/";
+    wx.request({
+      url: url,
+      header: {
+        "Authorization": "Bearer " + app.globalData.sichu_user.token
+      },
+      method: 'POST',
+      success: function (res) {
+        var data = res.data;
+        if (data && 'status' in data) {
+          wx.navigateBack()
+        }
+      }
+    })
   },
 
   on_status: function(e) {
     this.setData({
-      "bookown.status": e.detail.value
+      "bookown.status": parseInt(e.detail.value)
     })
     console.log(e.detail);
   },
@@ -42,8 +80,10 @@ Page({
       success: function (res) {
         var data = res.data;
         if (data && 'objects' in data) {
+          var bookown = data.objects[0];
+          bookown.status = parseInt(bookown.status) - 1;
           self.setData({
-            bookown: data.objects[0]
+            bookown: bookown
           })
         } else {
           wx.removeStorageSync("sichu_user")
