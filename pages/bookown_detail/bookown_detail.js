@@ -94,7 +94,7 @@ Page({
         } else {
           wx.removeStorageSync("sichu_user")
           wx.redirectTo({
-            url: '/pages/login/login.js',
+            url: '/pages/login/login',
           })
         }
       }

@@ -1,4 +1,4 @@
-// pages/login/login.js.js
+// pages/login/login.js
 Page({
 
   /**
@@ -6,6 +6,32 @@ Page({
    */
   data: {
 
+  },
+
+  show_numbers: function(e) {
+    var app = getApp();
+    var url = app.globalData.api_url + "/v1/account/numbers/";
+    wx.request({
+      url: url,
+      data: {
+        uid: app.globalData.sichu_user.uid
+      },
+      header: {
+        "Authorization": "Bearer " + app.globalData.sichu_user.token,
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: 'POST',
+      success: function (res) {
+        if ('total' in res.data) {
+          wx.redirectTo({
+            url: '/pages/cabinet/cabinet',
+          })
+        } else {
+          app.globalData.sichu_user = null;
+          wx.clearStorageSync();
+        }
+      }
+    })
   },
 
   login: function (e) {
@@ -41,9 +67,7 @@ Page({
   onLoad: function (options) {
     var app = getApp();
     if (app.globalData.sichu_user) {
-      wx.redirectTo({
-        url: '/pages/cabinet/cabinet',
-      })
+      this.show_numbers()
     }
   },
 

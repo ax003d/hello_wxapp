@@ -1,4 +1,4 @@
-/* pages/login/login.js.wxss */
+/* pages/login/login.wxss */
 .form {
   margin-bottom: 15rpx;
 }
