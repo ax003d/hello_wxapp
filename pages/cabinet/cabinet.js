@@ -61,7 +61,7 @@ Page({
         if (res.statusCode != 200) {
           wx.clearStorageSync();
           wx.redirectTo({
-            url: '/pages/login/login',
+            url: '/pages/login/login.js',
           })
           return
         }
