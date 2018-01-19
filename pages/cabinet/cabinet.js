@@ -95,7 +95,7 @@ Page({
     this.setData({
       sichu_user: app.globalData.sichu_user
     })
-    this.load_bookown()
+    this.load_bookown()   
   },
 
   /**
@@ -111,7 +111,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var app = getApp();
+    var del_id = app.globalData.book_del_id;
+    if (del_id) {
+      var bookowns = this.data.bookowns;
+      for (var i=0; i < bookowns.length; i++ ) {
+        if (bookowns[i].id == del_id) {
+          bookowns.splice(i, 1);
+          this.setData({
+            bookowns: bookowns
+          })
+          break;
+        }
+      }
+      app.globalData.book_del_id = null;
+    }
   },
 
   /**
@@ -139,7 +153,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log("reach bottom");
     this.load_bookown()
   },
 

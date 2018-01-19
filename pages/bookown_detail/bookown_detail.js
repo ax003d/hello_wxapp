@@ -51,6 +51,7 @@ Page({
       success: function (res) {
         var data = res.data;
         if (data && 'status' in data) {
+          app.globalData.book_del_id = self.data.bookown.id
           wx.navigateBack()
         }
       }
@@ -61,7 +62,6 @@ Page({
     this.setData({
       "bookown.status": parseInt(e.detail.value)
     })
-    console.log(e.detail);
   },
 
   /**

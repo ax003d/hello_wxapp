@@ -42,5 +42,6 @@ App({
     api_url: 'https://sichu.sinaapp.com',
     apikey: 'ec2de0fd0d5279e9a8f82da1430325',
     sichu_user: null,
+    book_del_id: null
   }
 })
