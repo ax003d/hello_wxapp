@@ -1,13 +1,31 @@
-<!--pages/login/login.wxml-->
-<view class='page'>
-  <view class='form'>
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="weui-toptips weui-toptips_warn" wx:if="{{ show_error }}">{{ error_msg }}</view>
+  <view class="page__bd">
     <form bindsubmit='login'>
-      <input name="username" type='text' placeholder='用户名'></input>
-      <input name="password" type='text' password='true' placeholder='密码'></input>
-      <button type='primary' form-type='submit'>登录</button>
+      <view class="weui-cells__title">登录私橱</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">用户名</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="username" type='text' placeholder="请输入用户名" />
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">密码</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="password" type='text' password='true' placeholder="请输入密码" />
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" form-type='submit'>登录</button>
+      </view>
     </form>
-  </view>
-  <view>
-    <button>注册</button>
   </view>
 </view>

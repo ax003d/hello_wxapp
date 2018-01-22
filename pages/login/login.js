@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    show_error: false,
+    error_msg: ""
   },
 
   show_numbers: function(e) {
@@ -34,9 +35,29 @@ Page({
     })
   },
 
+  show_error: function(msg) {
+    this.setData({
+      show_error: true,
+      error_msg: msg
+    })
+    var self = this;
+    setTimeout(function () {
+      self.setData({
+        show_error: false
+      });
+    }, 3000);
+  },
+
   login: function (e) {
     var app = getApp();
     var url = app.globalData.api_url + "/v1/account/login/";
+    var self = this;
+
+    if (!e.detail.value.username || !e.detail.value.password) {
+      this.show_error("请输入用户名和密码！")
+      return
+    }
+
     wx.request({
       url: url,
       data: {
@@ -56,6 +77,8 @@ Page({
           wx.redirectTo({
             url: '/pages/cabinet/cabinet',
           })
+        } else {
+          self.show_error("用户名或密码错误！")
         }
       }
     })
