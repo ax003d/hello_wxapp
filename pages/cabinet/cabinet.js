@@ -1,4 +1,6 @@
 // pages/cabinet/cabinet.js
+import { logout } from '../../utils/util.js'
+
 Page({
 
   /**
@@ -11,16 +13,12 @@ Page({
 
   on_profile: function() {
     var app = getApp();
-
+    var self = this;
     wx.showActionSheet({
       itemList: ['登出'],
       success: function (res) {
         if (res.tapIndex == 0) {          
-          wx.clearStorageSync()
-          app.globalData.sichu_user = null
-          wx.redirectTo({
-            url: '/pages/login/login',
-          })
+          logout();
         }
       }
     })
@@ -76,10 +74,7 @@ Page({
       method: 'GET',
       success: function (res) {
         if (res.statusCode != 200) {
-          wx.clearStorageSync();
-          wx.redirectTo({
-            url: '/pages/login/login',
-          })
+          logout()
           return
         }
         var data = res.data;
@@ -89,10 +84,7 @@ Page({
             bookowns: bookowns
           })
         } else {
-          wx.removeStorageSync("sichu_user")
-          wx.redirectTo({
-            url: '/pages/login/login',
-          })
+          logout()
         }
       }
     })

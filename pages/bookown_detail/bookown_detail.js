@@ -1,4 +1,6 @@
 // pages/bookown_detail/bookown_detail.js
+import { logout } from '../../utils/util.js'
+
 Page({
 
   /**
@@ -92,10 +94,7 @@ Page({
             bookown: bookown
           })
         } else {
-          wx.removeStorageSync("sichu_user")
-          wx.redirectTo({
-            url: '/pages/login/login',
-          })
+          logout()
         }
       }
     })
