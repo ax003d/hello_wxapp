@@ -79,6 +79,9 @@ Page({
     var app = getApp();
     var self = this;
     var url = app.globalData.api_url + "/v1/bookown/?id__exact=" + options.id;
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.request({
       url: url,
       header: {
@@ -96,6 +99,9 @@ Page({
         } else {
           logout()
         }
+      },
+      complete: function(res) {
+        wx.hideLoading()
       }
     })
   },
