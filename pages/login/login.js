@@ -58,6 +58,9 @@ Page({
       return
     }
 
+    wx.showLoading({
+      title: '登录中',
+    })
     wx.request({
       url: url,
       data: {
@@ -80,6 +83,9 @@ Page({
         } else {
           self.show_error("用户名或密码错误！")
         }
+      },
+      complete: function(res) {
+        wx.hideLoading()
       }
     })
   },
