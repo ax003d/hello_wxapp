@@ -9,6 +9,23 @@ Page({
     bookowns: []
   },
 
+  on_profile: function() {
+    var app = getApp();
+
+    wx.showActionSheet({
+      itemList: ['登出'],
+      success: function (res) {
+        if (res.tapIndex == 0) {          
+          wx.clearStorageSync()
+          app.globalData.sichu_user = null
+          wx.redirectTo({
+            url: '/pages/login/login',
+          })
+        }
+      }
+    })
+  },
+
   on_add: function () {
     var app = getApp();
     var self = this;

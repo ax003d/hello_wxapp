@@ -2,19 +2,33 @@
   <view class="page__bd">
     <view class='profile'>
       <view>
-        <image src='{{ sichu_user.avatar }}' mode='aspectFill' class='avatar'></image>
+        <image src='{{ sichu_user.avatar }}' mode='aspectFill' class='avatar' bindtap='on_profile'></image>
       </view>
       <view>
         <text>{{ sichu_user.username }}</text>
       </view>
     </view>
+    
+    <view class='empty' wx:if="{{ bookowns.length == 0 }}">
+      <text>您还没有书籍，请点击添加按钮，扫描书籍背面的 ISBN 添加书籍！</text>
+    </view>
+
     <view class='bookown'>
       <view wx:for="{{ bookowns }}" wx:key="{{ item.id }}">
         <image src='{{ item.book.cover }}' mode='aspectFit' class='cover {{ index % 3 < 2 ? "mr-10": "" }}' bindtap="on_detail" id="{{ item.id }}"></image>
       </view>
     </view>
+
+    <view class="weui-footer weui-footer_fixed-bottom">
+      <view class="weui-footer__links">
+        <navigator url="https://sichu.sinaapp.com" class="weui-footer__link">私橱网</navigator>
+      </view>
+      <view class="weui-footer__text">Copyright © 2012-2018 sichu.sinaapp.com</view>
+    </view>
+
   </view>
 </view>
+
 <view class='tools'>
   <button type='primary' class='btn-add flex-view-item' bindtap='on_add'>+</button>
 </view>

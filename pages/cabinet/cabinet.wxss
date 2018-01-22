@@ -44,7 +44,11 @@
 }
 
 .btn-add {
-  width: 100rpx;
-  height: 100rpx;
+  width: 90rpx;
+  height: 90rpx;
   border-radius: 50%;
+}
+
+.empty {
+  margin: 35rpx;
 }
