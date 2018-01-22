@@ -50,6 +50,11 @@ Page({
               self.setData({
                 bookowns: bookowns
               })
+            } else {
+              wx.showModal({
+                content: '添加书籍失败!',
+                showCancel: false
+              })
             }
           }
         })
