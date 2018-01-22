@@ -1,16 +1,17 @@
-<!--pages/cabinet/cabinet.wxml-->
-<view class='page'>
-  <view class='profile'>
-    <view>
-      <image src='{{ sichu_user.avatar }}' mode='aspectFill' class='avatar'></image>
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd">
+    <view class='profile'>
+      <view>
+        <image src='{{ sichu_user.avatar }}' mode='aspectFill' class='avatar'></image>
+      </view>
+      <view>
+        <text>{{ sichu_user.username }}</text>
+      </view>
     </view>
-    <view>
-      <text>{{ sichu_user.username }}</text>
-    </view>
-  </view>
-  <view class='bookown'>
-    <view wx:for="{{ bookowns }}" wx:key="{{ item.id }}">
-      <image src='{{ item.book.cover }}' mode='aspectFit' class='cover {{ index % 3 < 2 ? "mr-10": "" }}' bindtap="on_detail" id="{{ item.id }}"></image>
+    <view class='bookown'>
+      <view wx:for="{{ bookowns }}" wx:key="{{ item.id }}">
+        <image src='{{ item.book.cover }}' mode='aspectFit' class='cover {{ index % 3 < 2 ? "mr-10": "" }}' bindtap="on_detail" id="{{ item.id }}"></image>
+      </view>
     </view>
   </view>
 </view>

@@ -1,12 +1,6 @@
-/* pages/bookown_detail/bookown_detail.wxss */
-.detail {
-  background: #f5e3bd;
-  padding: 35rpx;
-}
-
 .book_info {
-  display: flex;
-  margin-top: 20rpx;
+  text-align: center;
+  padding-top: 20rpx;
 }
 
 .cover {
