@@ -29,7 +29,7 @@
     </form>
 
     <view class="weui-btn-area">
-      <button class="weui-btn" type="default">微信账号登录</button>
+      <button class="weui-btn" type="default" bindtap='login_wx'>微信账号登录</button>
     </view>
 
   </view>

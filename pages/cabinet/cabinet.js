@@ -32,6 +32,9 @@ Page({
     wx.scanCode({
       success: function (e) {
         var isbn = e.result;
+        wx.showLoading({
+          title: '添加书籍中',
+        })
         wx.request({
           url: url,
           data: {
@@ -56,6 +59,9 @@ Page({
                 showCancel: false
               })
             }
+          },
+          complete: function(res) {
+            wx.hideLoading()
           }
         })
       }

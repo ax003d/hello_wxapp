@@ -9,7 +9,7 @@ Page({
     error_msg: ""
   },
 
-  show_numbers: function(e) {
+  show_numbers: function (e) {
     var app = getApp();
     var url = app.globalData.api_url + "/v1/account/numbers/";
     wx.request({
@@ -35,7 +35,7 @@ Page({
     })
   },
 
-  show_error: function(msg) {
+  show_error: function (msg) {
     this.setData({
       show_error: true,
       error_msg: msg
@@ -46,6 +46,60 @@ Page({
         show_error: false
       });
     }, 3000);
+  },
+
+  login_wx: function (e) {
+    var app = getApp();
+    var url = app.globalData.api_url + "/v1/account/login_by_wechat/";
+    var self = this;
+    var data = {
+      apikey: app.globalData.apikey
+    }
+
+    wx.login({
+      success: function (res) {
+        if (res.code) {
+          data['code'] = res.code
+          wx.getUserInfo({
+            success: function (res) {
+              data['nick_name'] = res.userInfo.nickName
+              data['avatar_url'] = res.userInfo.avatarUrl
+              data['gender'] = res.userInfo.gender
+              data['province'] = res.userInfo.province
+              data['city'] = res.userInfo.city
+              data['country'] = res.userInfo.country
+
+              wx.showLoading({
+                title: '登录中',
+              })
+              wx.request({
+                url: url,
+                data: data,
+                header: {
+                  "Content-Type": "application/x-www-form-urlencoded"
+                },
+                method: 'POST',
+                success: function (res) {
+                  var data = res.data;
+                  if ('token' in data) {
+                    app.globalData.sichu_user = data;
+                    wx.setStorageSync("sichu_user", data)
+                    wx.redirectTo({
+                      url: '/pages/cabinet/cabinet',
+                    })
+                  } else {
+                    self.show_error("登录失败！")
+                  }
+                },
+                complete: function (res) {
+                  wx.hideLoading()
+                }
+              })
+            }
+          })
+        }
+      }
+    })
   },
 
   login: function (e) {
@@ -84,7 +138,7 @@ Page({
           self.show_error("用户名或密码错误！")
         }
       },
-      complete: function(res) {
+      complete: function (res) {
         wx.hideLoading()
       }
     })
