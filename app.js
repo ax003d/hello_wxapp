@@ -10,7 +10,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    api_url: 'https://sichu.sinaapp.com',
+    api_url: 'https://sichu.ax003d.top',
     apikey: 'ec2de0fd0d5279e9a8f82da1430325',
     sichu_user: null,
     book_del_id: null
